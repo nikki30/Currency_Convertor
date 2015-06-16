@@ -17,18 +17,22 @@
 </head>
 	<body>
 		<?php 
-		$sql="SELECT * FROM members_table";
+		$sql="SELECT id,username,datediff(now(),dob)/365 AS age,sign_up_date,email FROM members_table";
 		$res=mysqli_query($conn,$sql);
 		if(!$res)
-			{ die ("Query failed!");
+			{ die("Query failed!");
 	        }
 	    while($row=mysqli_fetch_assoc($res))
 	    	{
 	    	foreach($row as $key=>$val)
-	    	{ echo "{$key}: "."{$val}<br />";
-	    	}  
-	    	echo "<br /><hr /><br />";
+	    	{
+	    		if ($key=='age')
+	    		{ $val=round($val,0);
+	    	    }  
+	    	echo ucfirst($key)." : {$val}<br />";
 	    	}
+	    	echo "<br /><hr><br />";
+	    }
 	    	mysqli_free_result($res);
 	    ?>
 	</body>
