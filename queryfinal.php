@@ -22,9 +22,12 @@
 		if(!$res)
 			{ die ("Query failed!");
 	        }
-	    while($row=mysqli_fetch_row($res))
-	    	{ var_dump($row);
-	    	  echo "<br /><hr /><br />";
+	    while($row=mysqli_fetch_assoc($res))
+	    	{
+	    	foreach($row as $key=>$val)
+	    	{ echo "{$key}: "."{$val}<br />";
+	    	}  
+	    	echo "<br /><hr /><br />";
 	    	}
 	    	mysqli_free_result($res);
 	    ?>
