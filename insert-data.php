@@ -15,12 +15,12 @@ curl_close($ch);
 $exchangeRates = json_decode($json);
 // You can now access the rates inside the parsed object, like so:
 printf(
-    "1 %s in {$rates}: %s (as of %s)",
-    $exchangeRates->base,
-    $exchangeRates->rates->$curr,
+    "1 %s in {$curr}: %s (as of %s)",
+    $exchangeRates->base
+    $exchangeRates->rates->{$curr},
     date('H:i jS F, Y', $exchangeRates->timestamp)
 );
-$exRate=$exchangeRates->rates->$curr;
+$exRate=$exchangeRates->rates->{$curr};
 $sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$exRate')";
  
     if(!mysqli_query($conn,$sqlinsert))
@@ -33,17 +33,17 @@ $sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$exRate
 ?>
 <html>
 <head>
-	<title>
-		Inserting data in db
-	</title>
+  <title>
+    Inserting data in db
+  </title>
 </head>
-	<body>
-		<h2>Hey there!</h2>
-		<form action="insert-data.php" method="POST">
-		<input type="hidden" name="submitted" value="true" />
-		<fieldset>
-			<legend>Welcome to the Currency Converter</legend>
-			<label>First Currency:<br><select name='curr'>
+  <body>
+    <h2>Hey there!</h2>
+    <form action="insert-data.php" method="POST">
+    <input type="hidden" name="submitted" value="true" />
+    <fieldset>
+      <legend>Welcome to the Currency Converter</legend>
+      <label>First Currency:<br><select name='curr'>
                           <option value="USD" selected>United States Dollars - USD</option>
                           <option value="EUR">Euro - EUR</option>
                           <option value="GBP">United Kingdom Pounds - GBP</option>
@@ -175,11 +175,11 @@ $sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$exRate
                           <option value="XPD">Palladium Ounces - XPD</option>
                         </select>
             </label>
-			
-			
-		</fieldset>
-		<br />
-		
+      
+      
+    </fieldset>
+    <br />
+    
 <input type="submit" value="Add new currency" />
 </form>
 </body>
