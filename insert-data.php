@@ -21,7 +21,8 @@ printf(
     date('H:i jS F, Y', $exchangeRates->timestamp)
 );
 $exRate=$exchangeRates->rates->{$curr};
-$sqlinsert= "INSERT INTO mysite (curr_name,curr_rate) VALUES ('$curr','$exRate')";
+$timeRate=date('H:i jS F, Y', $exchangeRates->timestamp);
+$sqlinsert= "INSERT INTO mysite (curr_name,curr_rate,curr_time) VALUES ('$curr','$exRate','$timeRate')";
  
     if(!mysqli_query($conn,$sqlinsert))
     {
@@ -182,5 +183,6 @@ $sqlinsert= "INSERT INTO mysite (curr_name,curr_rate) VALUES ('$curr','$exRate')
     
 <input type="submit" value="Add new currency" />
 </form>
+
 </body>
 </html>
