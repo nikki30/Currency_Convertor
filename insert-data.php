@@ -182,19 +182,5 @@ $sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$exRate
 		
 <input type="submit" value="Add new currency" />
 </form>
-<?php
-if (isset($_POST['submitted']))
-{
-  include('mysql-connect.php');
-  $curr= $_POST['curr'];
-  $sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$rates')";
-   //trial table sports 
-    if(!mysqli_query($conn,$sqlinsert))
-    {
-      die('error in inserting');
-    }
-    echo "1 record added to DB";
-    }
-?>
 </body>
 </html>
