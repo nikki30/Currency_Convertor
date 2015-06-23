@@ -1,36 +1,3 @@
-<?php
-if (isset($_POST['submitted']))
-{
-  include('mysql-connect.php');
-  $curr= $_POST['curr'];
-}  
-$file = 'latest.json';
-$appId = '3af838236fe346c79ca01e62c5991caa';
-$ch = curl_init("http://openexchangerates.org/api/{$file}?app_id={$appId}");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// Get the data:
-$json = curl_exec($ch);
-curl_close($ch);
-// Decode JSON response:
-$exchangeRates = json_decode($json);
-// You can now access the rates inside the parsed object, like so:
-printf(
-    "1 %s in {$curr}: %s (as of %s)<br />",
-    $exchangeRates->base,
-    $exchangeRates->rates->{$curr},
-    date('H:i jS F, Y', $exchangeRates->timestamp)
-);
-$exRate=$exchangeRates->rates->{$curr};
-$sqlinsert= "INSERT INTO mysite (curr_name,curr_rate) VALUES ('$curr','$exRate')";
- 
-    if(!mysqli_query($conn,$sqlinsert))
-    {
-      die('error in inserting');
-    }
-    else
-    echo "1 record added to DB";
-    
-?>
 <html>
 <head>
   <title>
@@ -43,7 +10,7 @@ $sqlinsert= "INSERT INTO mysite (curr_name,curr_rate) VALUES ('$curr','$exRate')
     <input type="hidden" name="submitted" value="true" />
     <fieldset>
       <legend>Welcome to the Currency Converter</legend>
-      <label>First Currency:<br><select name='curr'>
+      <label>Currency:<br><select name='curr'>
                           <option value="USD" selected>United States Dollars - USD</option>
                           <option value="EUR">Euro - EUR</option>
                           <option value="GBP">United Kingdom Pounds - GBP</option>
