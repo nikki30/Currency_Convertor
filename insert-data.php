@@ -1,30 +1,36 @@
 <?php
-// Requested file
-// Could also be e.g. 'currencies.json' or 'historical/2011-01-01.json'
+if (isset($_POST['submitted']))
+{
+  include('mysql-connect.php');
+  $curr= $_POST['curr'];
+}  
 $file = 'latest.json';
 $appId = '3af838236fe346c79ca01e62c5991caa';
-
 $ch = curl_init("http://openexchangerates.org/api/{$file}?app_id={$appId}");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-
 // Get the data:
 $json = curl_exec($ch);
 curl_close($ch);
-
 // Decode JSON response:
 $exchangeRates = json_decode($json);
-
 // You can now access the rates inside the parsed object, like so:
 printf(
     "1 %s in {$rates}: %s (as of %s)",
     $exchangeRates->base,
-    $exchangeRates->rates->$rates,
+    $exchangeRates->rates->$curr,
     date('H:i jS F, Y', $exchangeRates->timestamp)
 );
-// -> eg. "1 USD in GBP: 0.643749 (as of 11:01, 3rd January 2012)"
+$exRate=$exchangeRates->rates->$curr;
+$sqlinsert= "INSERT INTO currency (curr_name,curr_rate) VALUES ('$curr','$exRate')";
+ 
+    if(!mysqli_query($conn,$sqlinsert))
+    {
+      die('error in inserting');
+    }
+    else
+    echo "1 record added to DB";
+    
 ?>
-
 <html>
 <head>
 	<title>
@@ -167,7 +173,6 @@ printf(
                           <option value="XAU">Gold Ounces - XAU</option>
                           <option value="XPT">Platinum Ounces - XPT</option>
                           <option value="XPD">Palladium Ounces - XPD</option>
-
                         </select>
             </label>
 			
