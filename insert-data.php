@@ -55,18 +55,15 @@ if (mysqli_connect_errno())
 
 $sql="SELECT curr_name,curr_rate,curr_time FROM mysite WHERE curr_time > timestampadd(hour, -1, now())";
 if ($result=mysqli_query($conn,$sql))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {if ($row[0]==$curr)
-      {
-    printf ("1 USD is %s  %s  as of %s<br />",$row[1],$row[0],$row[2]);
-      }
-    }
+{$sql="SELECT '$curr',curr_rate,curr_time FROM  mysite ORDER BY curr_time DESC LIMIT 1";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_row($result);
+{printf ("1 USD is %s  %s  as of %s<br />",$row[1],$row[0],$row[2]);
     echo "Hi, Took this from DB";
-  // Free result set
+}
+}
   mysqli_free_result($result);
 mysqli_close($conn);
 }
-}
+
 ?>
