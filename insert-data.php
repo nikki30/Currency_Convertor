@@ -53,8 +53,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-$sql="SELECT curr_name,curr_rate,curr_time FROM mysite";
-
+$sql="SELECT curr_name,curr_rate,curr_time FROM mysite WHERE curr_time > timestampadd(hour, -1, now())";
 if ($result=mysqli_query($conn,$sql))
   {
   // Fetch one and one row
