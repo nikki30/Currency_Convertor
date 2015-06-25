@@ -12,7 +12,7 @@ This is my page for the Web-dev Inductions held by Spider.
 Now these are the instructions you need to be able to access my work:
 First, what have I made.
 
-I have decided to try out a CURRENCY CONVERTOR. That's right, Something you may use to convert to currencies of your choice, feel better about yourself, if low on cash.
+I have decided to try out a CURRENCY CONVERTER. That's right, Something you may use to convert to currencies of your choice, feel better about yourself, if low on cash.
 
 Back to point.
 
@@ -21,7 +21,7 @@ Back to point.
 
 This currency convertor lets you pick a currency from a variety of currencies that are provided to you in a drop-down option.
 Once a currency of your choice is picked, it gives you the result.
-If already present in DB and less than an hour old, it retrieves data from the DB and shows to you the value along with the message "Taken from DB".
+If already present in DB and less than an hour old, it retrieves data from the DB and shows to you the value along with the message "Hi, Took this from DB".
 Else, if more than an hour old, or new, it retrieves the information from the API.
 
 ---
@@ -87,7 +87,32 @@ f)There you go, your result.
 ---
 ---
 
+###Screenshot of Page look
 
+![Mysite](images/page1.jpg)
+---
+---
+
+###Screenshot WHEN NEW CURRENCY ASKED
+
+![Mysite](images/new.jpg)
+---
+---
+
+###Screenshot WHEN OLD CURRENCY LESS THAN 1 HOUR OLD IS ASKED
+
+![Mysite](images/repeat.jpg)
+---
+---
+
+###Screenshot of table look
+
+![Mysite](images/table.jpg)
+---
+---
+
+
+##Thank you so much for taking a look!
 
 
 
