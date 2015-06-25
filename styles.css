@@ -39,14 +39,16 @@ select
 background:#B0C4DE;
 font-family:LucidaConsole;
 text-align:center;
-color:#DC143C;
+color:#191970;
 font-size:20px;
 box-shadow: 10px 10px 5px #888888;
 padding:2px;
+border:2px black;
 
 }
 input
 {background:#B0C4DE;
+border:2px black;
 font-family:LucidaConsole;
 text-align:center;
 color:#DC143C;

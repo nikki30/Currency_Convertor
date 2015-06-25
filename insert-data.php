@@ -1,3 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+    <style>
+      body {
+        font-family: 'Tangerine', serif;
+        font-size: 48px;
+        background:#ADD8E6;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
 <?php
 if (isset($_POST['submitted']))
 {
@@ -29,7 +42,7 @@ curl_close($ch);
 $exchangeRates = json_decode($json);
 // You can now access the rates inside the parsed object, like so:
 printf(
-    "1 %s in {$curr}: %s (as of %s)<br />",
+    "<br /><br />1 %s in {$curr}: %s (as of %s)<br /><br /><br />",
     $exchangeRates->base,
     $exchangeRates->rates->{$curr},
     date('H:i jS F, Y', $exchangeRates->timestamp)
@@ -59,7 +72,7 @@ if ($result=mysqli_query($conn,$sql))
 $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_row($result);
 {printf ("1 USD is %s  %s  as of %s<br />",$row[1],$row[0],$row[2]);
-    echo "Hi, Took this from DB";
+    echo "<br /><br />Hi, Took this from DB";
 }
 }
   mysqli_free_result($result);
@@ -67,3 +80,6 @@ mysqli_close($conn);
 }
 
 ?>
+
+</body>
+</html>
