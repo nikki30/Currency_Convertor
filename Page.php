@@ -3,14 +3,15 @@
   <title>
     Inserting data in db
   </title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
   <body>
-    <h2>Hey there!</h2>
+    <h2>World Wide Currencies in a Click</h2>
     <form action="insert-data.php" method="POST">
     <input type="hidden" name="submitted" value="true" />
     <fieldset>
-      <legend>Welcome to the Currency Converter</legend>
-      <label>Currency:<br><select name='curr'>
+      <legend>Welcome to the Currency Converter<br></legend>
+      <label><br>Pick your Currency:<br><br><select name='curr'>
                           <option value="USD" selected>United States Dollars - USD</option>
                           <option value="EUR">Euro - EUR</option>
                           <option value="GBP">United Kingdom Pounds - GBP</option>
@@ -145,9 +146,12 @@
       
       
     </fieldset>
-    <br />
+    <br>
+    <br>
+    <br>
+    <br>
     
-<input type="submit" value="Add new currency" />
+<input type="submit" value="GO" />
 </form>
 </body>
 </html>

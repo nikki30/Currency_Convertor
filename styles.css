@@ -1,0 +1,56 @@
+body
+{
+background:#B0C4DE;
+font-family:Algerian;
+text-align:center;
+background-image: url('http://fadedandblurred.com/wp-content/uploads/2013/12/mattebox2-featured2-1014x487.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;
+background-size: 1200px 600px;
+border-style: solid;
+ }
+h2
+{
+text-align:center;
+background:#B0C4DE;
+font-family:Allegre;
+color:#00008B;
+font-size:70px;
+padding:10px;
+}
+label
+{background:#B0C4DE;
+font-family:CourierNew;
+text-align:left;
+color:#006400;
+font-size:30px;
+}
+legend
+{background:#B0C4DE;
+font-family:Algerian;
+text-align:center;
+color:#DC143C;
+font-size:50px;
+padding:10px;
+}
+select
+{
+background:#B0C4DE;
+font-family:LucidaConsole;
+text-align:center;
+color:#DC143C;
+font-size:20px;
+box-shadow: 10px 10px 5px #888888;
+padding:2px;
+
+}
+input
+{background:#B0C4DE;
+font-family:LucidaConsole;
+text-align:center;
+color:#DC143C;
+font-size:20px;
+box-shadow: 10px 10px 5px #888888;
+
+}
