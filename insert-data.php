@@ -17,19 +17,9 @@ if (isset($_POST['submitted']))
   include('mysql-connect.php');
   $curr= $_POST['curr'];
 }  
-$sql="SELECT curr_name,curr_rate,curr_time FROM mysite";
-
-if ($result=mysqli_query($conn,$sql))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    $stored_curr_name= $row[0];
-   }
-    // Free result set
-  mysqli_free_result($result);
-}
-if (!($stored_curr_name==$curr))
+$sql="SELECT curr_name,curr_rate,curr_time FROM mysite Where curr_name='$curr'";
+$result=mysqli_query($conn,$sql);
+if (mysqli_num_rows($result)==0)
 {
 $file = 'latest.json';
 $appId = '3af838236fe346c79ca01e62c5991caa';
@@ -65,20 +55,18 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-
 $sql="SELECT curr_name,curr_rate,curr_time FROM mysite WHERE curr_time > timestampadd(hour, -1, now())";
 if ($result=mysqli_query($conn,$sql))
-{$sql="SELECT '$curr',curr_rate,curr_time FROM  mysite ORDER BY curr_time DESC LIMIT 1";
+{$sql="SELECT curr_name,curr_rate,curr_time FROM  mysite where curr_name='$curr' ORDER BY curr_time DESC LIMIT 1";
 $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_row($result);
-{printf ("1 USD is %s  %s  as of %s<br />",$row[1],$row[0],$row[2]);
+printf ("1 USD is %s  %s  as of %s<br />",$row[1],$row[0],$row[2]);
     echo "<br /><br />Hi, Took this from DB";
-}
-}
-  mysqli_free_result($result);
-mysqli_close($conn);
-}
 
+}
+}
+mysqli_free_result($result);
+mysqli_close($conn);
 ?>
 
 </body>
