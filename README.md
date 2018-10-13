@@ -1,12 +1,7 @@
-# SpiderTask2
+
 The  server stack I have used is WAMP- MySQL handles the database components, while PHP represents the dynamic scripting languages.
 
-#**My Page for Spider Webdev Inductions- TASK 2!**
----
 ###Welcome to my humble abode!
-
-This is my page for the Web-dev Inductions held by Spider. 
-
 ---
 ---
 Now these are the instructions you need to be able to access my work:
@@ -28,7 +23,6 @@ Else, if more than an hour old, or new, it retrieves the information from the AP
 ---
 
 The API I used for the task is: http://openexchangerates.org/api/{$file}?app_id={$appId}
-(Using my acquired App Id)
 
 ---
 ---
